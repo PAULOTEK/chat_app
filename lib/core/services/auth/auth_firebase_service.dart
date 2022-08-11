@@ -1,5 +1,5 @@
-import 'dart:io';
 import 'dart:async';
+import 'dart:io';
 
 import 'package:chat/core/models/chat_user.dart';
 import 'package:chat/core/services/auth/auth_service.dart';
@@ -18,16 +18,18 @@ class AuthFirebaseService implements AuthService {
     }
   });
 
+  @override
   ChatUser? get currentUser {
     return _currentUser;
   }
 
+  @override
   Stream<ChatUser?> get userChanges {
     return _userStream;
   }
 
-  Future<void> signup(
-      String name, String email, String password, File? image) async {
+  @override
+  Future<void> signup(String name, String email, String password, File? image) async {
     final auth = FirebaseAuth.instance;
     UserCredential credential = await auth.createUserWithEmailAndPassword(
       email: email,
@@ -49,6 +51,7 @@ class AuthFirebaseService implements AuthService {
     await _saveChatUser(_currentUser!);
   }
 
+  @override
   Future<void> login(String email, String password) async {
     await FirebaseAuth.instance.signInWithEmailAndPassword(
       email: email,
@@ -56,6 +59,7 @@ class AuthFirebaseService implements AuthService {
     );
   }
 
+  @override
   Future<void> logout() async {
     FirebaseAuth.instance.signOut();
   }

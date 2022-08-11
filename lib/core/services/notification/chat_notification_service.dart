@@ -3,7 +3,7 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 
 class ChatNotificationService with ChangeNotifier {
-  List<ChatNotification> _items = [];
+  final List<ChatNotification> _items = [];
 
   int get itemsCount {
     return _items.length;
@@ -50,8 +50,7 @@ class ChatNotificationService with ChangeNotifier {
 
   Future<void> _configureTerminated() async {
     if (await _isAuthorized) {
-      RemoteMessage? initialMsg =
-          await FirebaseMessaging.instance.getInitialMessage();
+      RemoteMessage? initialMsg = await FirebaseMessaging.instance.getInitialMessage();
       _messageHandler(initialMsg);
     }
   }

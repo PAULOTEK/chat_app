@@ -1,5 +1,5 @@
 import 'package:chat/core/services/notification/chat_notification_service.dart';
-import 'package:chat/view/auth_or_app_page.dart';
+import 'package:chat/view/widget/auth_or_app_page.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 

@@ -1,6 +1,6 @@
 import 'dart:io';
 
-enum AuthMode { Signup, Login }
+import 'package:chat/core/enum/enum.dart';
 
 class AuthFormData {
   String name = '';

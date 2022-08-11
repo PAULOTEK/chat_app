@@ -1,8 +1,8 @@
-import 'package:chat/components/messages.dart';
-import 'package:chat/components/new_message.dart';
 import 'package:chat/core/services/auth/auth_service.dart';
 import 'package:chat/core/services/notification/chat_notification_service.dart';
 import 'package:chat/view/notification_page.dart';
+import 'package:chat/widgets/messages.dart';
+import 'package:chat/widgets/new_message.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 

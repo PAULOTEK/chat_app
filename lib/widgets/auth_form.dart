@@ -1,7 +1,7 @@
 import 'dart:io';
 
-import 'package:chat/components/user_image_picker.dart';
 import 'package:chat/core/models/auth_form_data.dart';
+import 'package:chat/widgets/user_image_picker.dart';
 import 'package:flutter/material.dart';
 
 class AuthForm extends StatefulWidget {
@@ -13,7 +13,7 @@ class AuthForm extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  _AuthFormState createState() => _AuthFormState();
+  State<AuthForm> createState() => _AuthFormState();
 }
 
 class _AuthFormState extends State<AuthForm> {
@@ -60,12 +60,12 @@ class _AuthFormState extends State<AuthForm> {
                 ),
               if (_formData.isSignup)
                 TextFormField(
-                  key: ValueKey('name'),
+                  key: const ValueKey('name'),
                   initialValue: _formData.name,
                   onChanged: (name) => _formData.name = name,
-                  decoration: InputDecoration(labelText: 'Nome'),
-                  validator: (_name) {
-                    final name = _name ?? '';
+                  decoration: const InputDecoration(labelText: 'Nome'),
+                  validator: (namee) {
+                    final name = namee ?? '';
                     if (name.trim().length < 5) {
                       return 'Nome deve ter no mínimo 5 caracteres.';
                     }
@@ -73,12 +73,12 @@ class _AuthFormState extends State<AuthForm> {
                   },
                 ),
               TextFormField(
-                key: ValueKey('email'),
+                key: const ValueKey('email'),
                 initialValue: _formData.email,
                 onChanged: (email) => _formData.email = email,
-                decoration: InputDecoration(labelText: 'E-mail'),
-                validator: (_email) {
-                  final email = _email ?? '';
+                decoration: const InputDecoration(labelText: 'E-mail'),
+                validator: (emaill) {
+                  final email = emaill ?? '';
                   if (!email.contains('@')) {
                     return 'E-mail informado não é válido.';
                   }
@@ -86,29 +86,27 @@ class _AuthFormState extends State<AuthForm> {
                 },
               ),
               TextFormField(
-                key: ValueKey('password'),
+                key: const ValueKey('password'),
                 initialValue: _formData.password,
                 onChanged: (password) => _formData.password = password,
                 obscureText: true,
-                decoration: InputDecoration(labelText: 'Senha'),
-                validator: (_password) {
-                  final password = _password ?? '';
+                decoration: const InputDecoration(labelText: 'Senha'),
+                validator: (passwordd) {
+                  final password = passwordd ?? '';
                   if (password.length < 6) {
                     return 'Senha deve ter no mínimo 6 caracteres.';
                   }
                   return null;
                 },
               ),
-              SizedBox(height: 12),
+              const SizedBox(height: 12),
               ElevatedButton(
                 onPressed: _submit,
                 child: Text(_formData.isLogin ? 'Entrar' : 'Cadastrar'),
               ),
               TextButton(
                 child: Text(
-                  _formData.isLogin
-                      ? 'Criar uma nova conta?'
-                      : 'Já possui conta?',
+                  _formData.isLogin ? 'Criar uma nova conta?' : 'Já possui conta?',
                 ),
                 onPressed: () {
                   setState(() {

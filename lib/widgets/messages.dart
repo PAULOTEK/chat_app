@@ -1,7 +1,7 @@
-import 'package:chat/components/message_bubble.dart';
 import 'package:chat/core/models/chat_massage.dart';
 import 'package:chat/core/services/auth/auth_service.dart';
 import 'package:chat/core/services/chat/chat_service.dart';
+import 'package:chat/widgets/message_bubble.dart';
 import 'package:flutter/material.dart';
 
 class Messages extends StatelessWidget {
@@ -14,9 +14,9 @@ class Messages extends StatelessWidget {
       stream: ChatService().messagesStream(),
       builder: (ctx, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
-          return Center(child: CircularProgressIndicator());
+          return const Center(child: CircularProgressIndicator());
         } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
-          return Center(child: Text('Sem Dados. Vamos conversar?'));
+          return const Center(child: Text('Sem Dados. Vamos conversar?'));
         } else {
           final msgs = snapshot.data!;
           return ListView.builder(
